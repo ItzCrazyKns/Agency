@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "test": "./index.ts:graph"
+  },
+  "env": {}
+}
