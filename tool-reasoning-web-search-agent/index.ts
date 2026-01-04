@@ -2,15 +2,22 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { ChatOpenAI } from "@langchain/openai";
+import { ChatOllama } from "@langchain/ollama"
 import { tool } from "@langchain/core/tools";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { END, MessagesAnnotation, StateGraph } from "@langchain/langgraph";
 import { AIMessage, SystemMessage } from "@langchain/core/messages";
 import z from "zod";
 
-const model = new ChatOpenAI({
+/* const model = new ChatOpenAI({
     model: 'gpt-4.1-mini',
     temperature: 0.7
+})
+ */
+
+const model = new ChatOllama({
+    model: 'granite4:tiny-h',
+    numCtx: 32000
 })
 
 const webSearchTool = tool(
